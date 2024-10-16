@@ -1,0 +1,29 @@
+<form [formGroup]='registerForm' (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+    <h2 class="text-center text-primary"> Sign up</h2>
+    <hr>
+
+    <div class="form-group">
+        <label class="control-label" style="margin-right: 10px;">I am a:</label>
+        <label class="radio-inline">
+            <input type="radio" value="male" formControlName="gender" [(ngModel)]="model.gender"> Male
+            <input type="radio" value="female" class="ml-3" formControlName="gender"> Female
+        </label>
+    </div>
+
+    <app-text-input [formControl]='(registerForm).controls["username"]' [label]='"Username"' [(ngModel)]="model.username"></app-text-input>
+    <app-text-input [formControl]='(registerForm).controls["knownAs"]' [label]='"Known as"' [(ngModel)]="model.knownAs"></app-text-input>
+
+    <app-date-input [formControl]="registerForm.controls['dateOfBirth']" [label]="'Date of birth'" [maxDate]="maxDate" [(ngModel)]="model.dateOfBirth"></app-date-input>
+
+    <app-text-input [formControl]='(registerForm).controls["city"]' [label]='"City"' [(ngModel)]="model.city"></app-text-input>
+    <app-text-input [formControl]='(registerForm).controls["country"]' [label]='"Country"' [(ngModel)]="model.country"></app-text-input>
+
+    <app-text-input [formControl]='(registerForm).controls["password"]' [label]='"Password"' [type]='"password"' [(ngModel)]="model.password"></app-text-input>
+    <app-text-input [formControl]='(registerForm).controls["confirmPassword"]' [label]='"Confirm password"' [type]='"password"'></app-text-input>
+
+
+    <div class="form-group text-center mt-3">
+        <button class="btn btn-success mr-2" [disabled]="!registerForm.valid" type="submit">Register</button>
+        <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button>
+    </div>
+</form>
